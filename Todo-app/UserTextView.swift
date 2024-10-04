@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct UserTextView: View {
+    @Binding var tasks: [String]
+    @State var userInput : String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            TextField("Task name", text: $userInput)
+            
+            Button("Add task"){
+                tasks.append(userInput)
+                userInput = ""
+            }
+        }
     }
 }
 
 #Preview {
-    UserTextView()
+    UserTextView(tasks: .constant([]))
 }

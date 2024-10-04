@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var tasks: [String] = []
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            UserTextView (tasks: $tasks)
+            
+            List(tasks, id: \.self) {tasks in
+                Text(tasks)
+            }
         }
         .padding()
     }
